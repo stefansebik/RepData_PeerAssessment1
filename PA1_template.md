@@ -103,7 +103,6 @@ Imputation is based on mean of given 5-minute interval (which was calculated in 
 ```r
 activity_imputed <- activity
 
-n <- 0
 for(i in 1:nrow(activity_imputed)) {
     if (is.na(activity_imputed[i,"steps"])) {
         activity_imputed[i,"steps"] = average_steps_per_interval[average_steps_per_interval$interval == activity_imputed[i,"interval"],"steps_average"]
@@ -122,7 +121,7 @@ Histogram of the total number of steps taken each day for the new dataset.
 ```r
 ggplot(data = total_steps_per_day_imputed, aes(steps_total)) + 
     geom_histogram(fill = "white", color = "blue", binwidth = 3000) + 
-    labs(title = "Total number of steps taken each day", x = "Steps", y = "Frequency")
+    labs(title = "Total number of steps taken each day (after data imputation)", x = "Steps", y = "Frequency")
 ```
 
 ![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png)
